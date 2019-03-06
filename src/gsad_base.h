@@ -196,4 +196,8 @@ int user_set_charts (const gchar*, const int);
 /* default refresh interval setting */
 int user_set_autorefresh (const gchar*, const gchar*);
 
+void set_per_ip_connection_limit (int limit);
+
+int get_per_ip_connection_limit ();
+
 #endif /* not _GSAD_BASE_H */

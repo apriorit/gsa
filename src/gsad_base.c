@@ -79,6 +79,11 @@ static int chroot_state = 0;
 static int http_only = 0;
 
 /**
+ * @brief Current maximum number of connection per IP address.
+ */
+static int per_ip_connection_limit;
+
+/**
  * @brief Base init.
  *
  * @return 0 success, 1 XML needs thread support.
@@ -889,3 +894,19 @@ params_iterator_next (params_iterator_t *iterator, char **name,
 {
   return g_hash_table_iter_next (iterator, (gpointer*) name, (gpointer*) param);
 }
+
+void
+set_per_ip_connection_limit (int limit)
+{
+  if (limit >= 0)
+    per_ip_connection_limit = limit;
+  else
+    per_ip_connection_limit = 0;
+}
+
+int
+get_per_ip_connection_limit ()
+{
+  return per_ip_connection_limit;
+}
+
